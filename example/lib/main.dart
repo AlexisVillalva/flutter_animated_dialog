@@ -44,11 +44,10 @@ class _MyAppState extends State<MyApp> {
 // The StatefulWidget's job is to take in some data and create a State class.
 // In this case, the Widget takes a title, and creates a _MyHomePageState.
 class MyHomePage extends StatefulWidget {
-  final String title;
+  final String? title;
+  final VoidCallback? onSetting;
 
-  final VoidCallback onSetting;
-
-  MyHomePage({Key key, this.title, this.onSetting}) : super(key: key);
+  const MyHomePage({Key? key, this.title, this.onSetting}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -59,23 +58,23 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // Whether the green box should be visible or invisible
 
-  String selectedIndexText;
+  String selectedIndexText = '';
 
-  int selectIdx;
+  int selectIdx = 0;
 
-  String singleSelectedIndexText;
+  String singleSelectedIndexText = '';
 
-  int selectIndex;
+  int selectIndex = 0;
 
-  String multiSelectedIndexesText;
+  String multiSelectedIndexesText = '';
 
-  List<int> selectedIndexes;
+  List<int> selectedIndexes = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title!),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.settings),
